@@ -50,11 +50,11 @@ class Train
   end
 
   def inc_length
-    self.length += 1 if (self.speed == 0)
+    self.length += 1 if self.speed == 0
   end
 
   def dec_length
-    self.length -= 1 if (self.speed == 0)
+    self.length -= 1 if self.speed == 0
   end
 
   def change_route(route)
@@ -75,11 +75,11 @@ class Train
   end
 
   def to_next_station
-    self.station = route.stations[route.stations.index(station) + 1] if (station != route.last)
+    self.station = next_station if next_station
   end
 
   def to_prev_station
-    self.station = route.stations[route.stations.index(station) - 1] if (station != route.first)
+    self.station = prev_station if prev_station
   end
 
 end
