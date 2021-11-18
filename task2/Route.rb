@@ -9,17 +9,7 @@ class Route
   end
 
   def delete_station(station)
-    self.stations.delete(station) if station_first? && station_last?
-  end
-
-  private
-
-  def station_first?
-    (station != first).zero?
-  end
-
-  def station_last?
-    (station != last).zero?
+    self.stations.delete(station) if (station != first) && (station != last)
   end
 
 end

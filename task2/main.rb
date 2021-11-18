@@ -26,8 +26,11 @@ class Menu
     when '3'
       actions_with_routes
     when '0'
+      abort "Выход из программы..."
     end
   end
+
+  private
 
   def actions_with_stations
     print "Действия со станциями\n"\
@@ -275,7 +278,7 @@ class Menu
   def delete_station_from_route
     print "Маршрут, у которого хотите удалить промежуточную станцию: \n"
     @routes.length.times do |k|
-      print "(#{k}) - #{@routes[k].all_stations}"
+      print "(#{k}) - #{@routes[k].stations}"
     end
     cur_route = gets.chomp.to_i
     print "Введите название станции: "
