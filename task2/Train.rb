@@ -11,11 +11,7 @@ class Train
   end
 
   def add_wagon(wagon)
-    if wagon.type == self.type
-      self.wagons << wagon
-    else
-      print "Вагон не соответствует поезду\n"
-    end
+    self.wagons << wagon if wagon.type == self.type
   end
 
   def stop

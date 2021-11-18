@@ -162,6 +162,10 @@ class Menu
     print "Номер поезда:\n"
   end
 
+  def train_not_exists
+    print "Такого поезда не существует\n"
+  end
+
   def add_wagon
     print "Выберите тип вагона:\n"\
           "(1) - грузовой\t (2) - пассажирский\n"
