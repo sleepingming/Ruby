@@ -2,7 +2,7 @@ require_relative 'Route'
 require_relative 'Wagon'
 
 class Train
-  attr_reader :route, :stationprev, :stationnext, :stationcurrent
+  attr_reader :route, :stationprev, :stationnext, :stationcurrent, :type
   attr_accessor :speed, :route, :station, :number, :wagons
   def initialize(number)
     @number = number
@@ -11,7 +11,11 @@ class Train
   end
 
   def add_wagon(wagon)
-    self.wagons << wagon
+    if wagon.type == self.type
+      self.wagons << wagon
+    else
+      print "Вагон не соответствует поезду\n"
+    end
   end
 
   def stop

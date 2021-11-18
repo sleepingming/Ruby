@@ -129,12 +129,12 @@ class Menu
     pick = gets.chomp
     case pick
     when '1'
-      print "Номер поезда:\n"
+      gets_train_number
       train_number = gets.chomp
       train = CargoTrain.new(train_number)
       @trains << train
     when '2'
-      print "Номер поезда:\n"
+      gets_train_number
       train_number = gets.chomp
       train = PassengerTrain.new(train_number)
       @trains << train
@@ -158,6 +158,10 @@ class Menu
     end
   end
 
+  def gets_train_number
+    print "Номер поезда:\n"
+  end
+
   def add_wagon
     print "Выберите тип вагона:\n"\
           "(1) - грузовой\t (2) - пассажирский\n"
@@ -165,32 +169,24 @@ class Menu
     case pick
     when '1'
       wagon = CargoWagon.new
-      print "Номер поезда, к которому хотите прикрепить вагон\n"
+      gets_train_number
       train_number = gets.chomp
       @trains.each do |cur_train|
         if cur_train.number == train_number
           current_train = cur_train
-          if current_train.type == 'cargo'
-            current_train.wagons << wagon
-          else
-            print "Это не грузовой поезд\n"
-          end
+          current_train.add_wagon(wagon)
         else
           print "Такого поезда не существует\n"
         end
       end
     when '2'
       wagon = PassengerWagon.new
-      print "Номер поезда, к которому хотите прикрепить вагон\n"
+      gets_train_number
       train_number = gets.chomp
       @trains.each do |cur_train|
         if cur_train.number == train_number
           current_train = cur_train
-          if current_train.type == 'passenger'
-            current_train.wagons << wagon
-          else
-            print "Это не пассажирский поезд"
-          end
+          current_train.add_wagon(wagon)
         else
           print "Такого поезда не существует"
         end
@@ -199,7 +195,7 @@ class Menu
   end
 
   def remove_wagon
-    print "Номер поезда, от которого хотите отсоединить вагон\n"
+    gets_train_number
     train_number = gets.chomp
     @trains.each do |cur_train|
       if cur_train.number == train_number
@@ -211,7 +207,7 @@ class Menu
   end
 
   def move_train_forward
-    print "Введите номер поезда, который хотите переместить вперед: \n"
+    gets_train_number
     train_number = gets.chomp
     @trains.each do |cur_train|
       if cur_train.number == train_number
@@ -227,7 +223,7 @@ class Menu
   end
 
   def move_train_backward
-    print "Номер поезда, который хотите переместить назад \n"
+    gets_train_number
     train_number = gets.chomp
     @trains.each do |cur_train|
       if cur_train.number == train_number

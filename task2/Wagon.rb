@@ -1,7 +1,5 @@
 class Wagon
 
-  protected # Чтобы эти методы не было доступны для пользователя и чтобы использовать type в подклассах
-
   attr_reader :type
 end
 
