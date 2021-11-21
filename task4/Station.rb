@@ -11,7 +11,7 @@ class Station
     @name = name
     @trains = []
     @@stations = []
-    validate_name
+    validate_name!
     register_instance
   end
 
