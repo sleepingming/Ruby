@@ -16,7 +16,7 @@ class Station
   end
 
   def trains_on_station
-    Train.trains.each do |train|
+    Train.@trains.each do |train|
       yield(train)
     end
   end
