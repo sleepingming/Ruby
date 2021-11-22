@@ -12,7 +12,7 @@ module Validation
     end
 
     def validate(name, validation_type, parameter = nil)
-      var_name = "#{name}.to_sym
+      var_name = "#{name}".to_sym
       cur_validation = { 'var' => var_name, 'type' => validation_type, 'parameter' => parameter }
       required_validations << cur_validation
     end
