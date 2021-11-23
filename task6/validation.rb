@@ -19,8 +19,7 @@ module Validation
 
     module InstanceMethods
       def presence_validation(var, parameter)
-        instance_variable = instance_variable_get(var)
-        if instance_variable.empty?
+        if var.empty?
           raise 'Вы ничего не ввели'
         end
       end
@@ -35,7 +34,8 @@ module Validation
         raise 'Значение атрибута не соответствует заданному классу' unless instance_variable.instance_of?(parameter)
       end
 
-      def validate!
+      def validate!(var)
+        instance_variable = instance_variable_get(var)
         self.class.required_validations.each do |value|
           send("#{value['type']}_validation".to_sym, value['var'], value['parameter'])
       end
